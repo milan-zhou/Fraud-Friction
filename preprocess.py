@@ -6,7 +6,6 @@ from concurrent.futures import ThreadPoolExecutor
 import math
 import json
 
-
 #Not using utils version right now because in future, should make callback to increase efficiency
 def get_lat_lon(ip):
     r = requests.get("http://ipinfo.io/%s/geo" % ip)
@@ -21,7 +20,7 @@ def process(y, ip,d):
     d[ip] = {"y": y, "lat": lat, "lon": lon}
 
 def main():
-    if len(sys.argv) != 3:
+    if len(sys.argv) != 3 or sys.argv[1] != "-f":
         print("Usage: preprocess.py -f [file]")
         sys.exit()
 
